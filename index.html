@@ -95,8 +95,10 @@
     <h2>Projects</h2>
     <div class="card">
       <span class="label">In progress</span>
-      <p>Fine-tuning an open LLM for text-to-SQL with LoRA on GPUs, and profiling the training
-         run to see where GPU time goes.</p>
+      <p>Fine-tuned Qwen2.5-1.5B for text-to-SQL with LoRA on an NVIDIA T4, raising exact-match
+         accuracy on 200 held-out questions from 46% to 70%. Profiling showed 87% of GPU time in
+         matrix multiplications running without tensor cores, which led to a precision fix.
+         Next: serving and benchmarking on GKE.</p>
     </div>
 
     <h2>Experience</h2>
