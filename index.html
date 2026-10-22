@@ -58,6 +58,9 @@
                    font-size: 12px; text-transform: uppercase; letter-spacing: .08em;
                    color: var(--accent); margin-bottom: 4px; }
     .card p { color: var(--fg); font-size: 15.5px; }
+    .card .card-link { margin-top: 10px; font-size: 14.5px; }
+    .card-link a { color: var(--accent); text-decoration: none; font-weight: 500; }
+    .card-link a:hover { text-decoration: underline; text-underline-offset: 3px; }
     .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; padding: 0; list-style: none; }
     .chips li { background: var(--chip); color: var(--fg); font-size: 13px;
                 padding: 4px 10px; border-radius: 999px; }
@@ -98,7 +101,8 @@
       <p>Fine-tuned Qwen2.5-1.5B for text-to-SQL with LoRA on an NVIDIA T4, raising exact-match
          accuracy on 200 held-out questions from 46% to 70%. Profiling showed 87% of GPU time in
          matrix multiplications running without tensor cores, which led to a precision fix.
-         Next: serving and benchmarking on GKE.</p>
+         Next: serving with vLLM on an L4 (Cloud Run) and a T4, and comparing cost per token.</p>
+      <p class="card-link"><a href="https://github.com/will-gits-it/llm-accelerator-bench">View the code and results →</a></p>
     </div>
 
     <h2>Experience</h2>
