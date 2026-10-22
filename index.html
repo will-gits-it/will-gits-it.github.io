@@ -4,78 +4,160 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>William Reutebuch</title>
-  <meta name="description" content="William Reutebuch: cloud engineer working on Google Cloud, GKE, and AI infrastructure.">
+  <meta name="description" content="William Reutebuch: Technology Analyst at Infosys working on Google Cloud, Apigee, GKE, and AI projects.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%231a73e8'/><text x='16' y='22' font-family='Arial' font-size='16' font-weight='700' fill='white' text-anchor='middle'>WR</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,700&family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #fafaf9; --fg: #1c1c1c; --muted: #5f6368; --line: #e3e3e0;
       --accent: #1a73e8; --chip: #eef3fd;
     }
     @media (prefers-color-scheme: dark) {
-      :root { --bg: #111214; --fg: #ececec; --muted: #9aa0a6; --line: #2a2c30;
+      :root { --bg: #111214; --fg: #ececec; --muted: #a2a7ad; --line: #2a2c30;
               --accent: #8ab4f8; --chip: #1b2433; }
     }
     * { box-sizing: border-box; margin: 0; }
     body {
       background: var(--bg); color: var(--fg);
-      font: 400 17px/1.6 Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
-      min-height: 100vh; display: grid; place-items: center; padding: 48px 20px;
+      font: 400 17px/1.65 Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+      padding: 72px 20px 56px;
     }
-    main { width: 100%; max-width: 620px; }
+    main { max-width: 680px; margin: 0 auto; }
     .tag { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 13px;
-           color: var(--accent); letter-spacing: .02em; }
-    h1 { font-size: clamp(36px, 7vw, 52px); line-height: 1.05; font-weight: 700;
-         letter-spacing: -0.02em; margin: 10px 0 18px; }
-    p { color: var(--muted); max-width: 54ch; }
-    p strong { color: var(--fg); font-weight: 500; }
-    .now { margin-top: 28px; padding: 16px 18px; border: 1px solid var(--line);
-           border-left: 3px solid var(--accent); border-radius: 8px; }
-    .now span { display: block; font-family: "JetBrains Mono", ui-monospace, monospace;
-                font-size: 12px; text-transform: uppercase; letter-spacing: .08em;
-                color: var(--accent); margin-bottom: 4px; }
-    .now p { color: var(--fg); font-size: 15.5px; }
-    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; padding: 0; list-style: none; }
+           color: var(--accent); letter-spacing: .02em; display: flex; flex-wrap: wrap;
+           gap: 4px 10px; }
+    .tag a { color: var(--accent); text-decoration: none; }
+    .tag a[href]:hover { text-decoration: underline; text-underline-offset: 3px; }
+    .tag a.pending:not([href]) { cursor: help; }
+    .secret { display: inline-flex; gap: 10px; opacity: 0; transition: opacity .25s ease; }
+    .secret:hover, .secret:focus-within { opacity: 1; }
+    html { scroll-behavior: smooth; }
+    /* Archivo's width axis at 125% gives genuinely wide letterforms (not a distorted stretch). */
+    h1 { font-family: Archivo, Inter, system-ui, sans-serif; font-stretch: 125%;
+         font-variation-settings: "wdth" 125; font-size: clamp(30px, 7.4vw, 54px);
+         line-height: 1.05; font-weight: 700; letter-spacing: 0.01em; margin: 10px 0 20px; }
+    h2 { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 13px;
+         font-weight: 400; text-transform: uppercase; letter-spacing: .1em;
+         color: var(--accent); margin: 52px 0 18px; padding-bottom: 10px;
+         border-bottom: 1px solid var(--line); }
+    p { color: var(--muted); }
+    p + p { margin-top: 14px; }
+    .intro { font-size: 18px; color: var(--fg); }
+    .intro strong { font-weight: 500; }
+    .role { margin-bottom: 30px; }
+    .role-head { display: flex; flex-wrap: wrap; justify-content: space-between;
+                 align-items: baseline; gap: 4px 16px; margin-bottom: 6px; }
+    .role h3 { font-size: 18px; font-weight: 600; }
+    .when { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 13px;
+            color: var(--muted); white-space: nowrap; }
+    .card { padding: 16px 18px; border: 1px solid var(--line);
+            border-left: 3px solid var(--accent); border-radius: 8px; margin-top: 16px; }
+    .card .label { display: block; font-family: "JetBrains Mono", ui-monospace, monospace;
+                   font-size: 12px; text-transform: uppercase; letter-spacing: .08em;
+                   color: var(--accent); margin-bottom: 4px; }
+    .card p { color: var(--fg); font-size: 15.5px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; padding: 0; list-style: none; }
     .chips li { background: var(--chip); color: var(--fg); font-size: 13px;
                 padding: 4px 10px; border-radius: 999px; }
-    nav { display: flex; flex-wrap: wrap; gap: 22px; margin-top: 34px; padding-top: 22px;
-          border-top: 1px solid var(--line); }
-    nav a { color: var(--fg); text-decoration: none; font-weight: 500;
-            border-bottom: 1.5px solid var(--accent); padding-bottom: 1px; }
-    nav a:hover { color: var(--accent); }
-    footer { margin-top: 40px; font-size: 13px; color: var(--muted); }
+    .contact { display: grid; grid-template-columns: 72px 1fr; gap: 10px 16px; margin: 0; }
+    .contact dt { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 13px;
+                  color: var(--muted); padding-top: 3px; }
+    .contact dd { margin: 0; }
+    .contact a { color: var(--fg); text-decoration: none; font-weight: 500;
+                 border-bottom: 1.5px solid var(--accent); }
+    .contact a:hover { color: var(--accent); }
   </style>
 </head>
 <body>
   <main>
-    <div class="tag">// cloud · kubernetes · ai infrastructure</div>
+    <div class="tag">
+      <a href="#contact">Contact</a>
+      <span aria-hidden="true">·</span>
+      <a href="https://github.com/will-gits-it">GitHub</a>
+      <span aria-hidden="true">·</span>
+      <a href="https://www.linkedin.com/in/william-reutebuch/">LinkedIn</a>
+      <!-- Hidden until hovered. Photography archive: when ready, add href="https://..." to the tag below. -->
+      <span class="secret">
+        <span aria-hidden="true">·</span>
+        <a class="pending" title="Coming soon" tabindex="0">Mystery</a>
+      </span>
+    </div>
     <h1>William Reutebuch</h1>
-    <p>
-      I'm a <strong>Senior Associate at Infosys</strong>, working with enterprise customers on
-      <strong>Google Cloud</strong>: Apigee X and Hybrid, GKE, networking, and identity.
-      I lead live troubleshooting during critical outages and turn complex architecture
-      problems into clear fixes.
+    <p class="intro">
+      Welcome to my homepage! I have created a bit of an interactive resume here, as well as a
+      home for the projects that I have been working on. I have been developing systems in areas
+      that interest me or help make my life easier. Here's a glimpse into some of them. These are
+      all open source, so feel free to use any of these that you'd like :)
     </p>
 
-    <div class="now">
-      <span>Currently building</span>
-      <p>An end-to-end LLM project on GKE: fine-tuning an open model with LoRA on GPUs,
-         serving it with vLLM, and benchmarking cost per token across accelerators.</p>
+    <h2>Projects</h2>
+    <div class="card">
+      <span class="label">In progress</span>
+      <p>Fine-tuning and serving an open LLM on Google Kubernetes Engine: LoRA training on GPUs,
+         serving with vLLM, and benchmarking cost per token across accelerators.</p>
     </div>
 
+    <h2>Experience</h2>
+
+    <div class="role">
+      <div class="role-head">
+        <h3>Technical Service Representative</h3>
+        <span class="when">July 2023 – Present</span>
+      </div>
+      <p>
+        I lead calls with enterprise customer teams, providing the technical expertise needed
+        to resolve critical outages or advise on their configurations during early framework
+        planning. I clearly communicate complex architectural failures to restore services and
+        set customers up for future success.
+      </p>
+      <p>
+        I triage runtime failures and networking configurations across cloud-native Apigee X and
+        container-driven Hybrid deployments, drawing on a strong knowledge of core GCP
+        infrastructure (GKE, PSC, Cloud Load Balancing), Linux, advanced HTTP networking, and
+        complex identity governance to quickly diagnose API failures.
+      </p>
+      <p>
+        In this role, I've built continuous, multi-year partnerships with customer stakeholders
+        by pairing diligent communication with concise technical solutions, establishing a
+        foundation of trust that strengthens the client relationship.
+      </p>
+    </div>
+
+    <div class="role">
+      <div class="role-head">
+        <h3>Data Transformation Specialist</h3>
+        <span class="when">December 2021 – June 2023</span>
+      </div>
+      <p>
+        I developed Python code that created new APIs and features for a website used by the
+        client's customers, focused on predictive modeling and data visualization.
+      </p>
+      <p>
+        A major feature was generating in-depth forecasting models that sourced data from customer
+        databases (Redis, Oracle, MongoDB). The models could be downloaded as Excel templates,
+        edited to each customer's needs, and re-uploaded to the server to schedule future
+        product orders.
+      </p>
+    </div>
+
+    <h2>Skills</h2>
     <ul class="chips" aria-label="Skills">
-      <li>Google Cloud</li><li>GKE / Kubernetes</li><li>Apigee</li>
-      <li>Python</li><li>PyTorch</li><li>vLLM</li><li>Linux</li><li>SQL</li>
+      <li>Google Cloud</li><li>GKE / Kubernetes</li><li>Apigee X &amp; Hybrid</li>
+      <li>Cloud Load Balancing</li><li>Python</li><li>PyTorch</li><li>vLLM</li>
+      <li>Linux</li><li>SQL</li><li>Redis</li><li>Oracle</li><li>MongoDB</li>
     </ul>
 
-    <nav>
-      <a href="https://github.com/will-gits-it">GitHub</a>
-      <a href="mailto:will.r8900@gmail.com">Email</a>
-    </nav>
-
-    <footer>B.S. Informatics, Indiana University · Full site coming soon</footer>
+    <h2 id="contact">Contact</h2>
+    <dl class="contact">
+      <dt>Email</dt>
+      <dd><a href="mailto:will.r8900@gmail.com">will.r8900@gmail.com</a></dd>
+      <dt>Phone</dt>
+      <dd><a href="tel:+15023770815">(502) 377-0815</a></dd>
+      <dt>Mail</dt>
+      <dd>2101 Market St, Unit 230<br>Denver, CO 80205</dd>
+    </dl>
   </main>
 </body>
 </html>
